@@ -1,0 +1,111 @@
+🟦 core/market_scanner.py
+python
+class MarketScanner:
+    def __init__(self, markets=None):
+        self.markets = markets or []
+
+    def scan(self):
+        """
+        Scan all configured markets and return raw market data.
+        TODO: Implement API calls / DEX queries.
+        """
+        return []
+
+    def filter(self, data):
+        """
+        Filter assets by liquidity, volume, market cap, volatility, etc.
+        TODO: Implement filtering logic.
+        """
+        return []
+🟦 core/opportunity_engine.py
+python
+class OpportunityEngine:
+    def __init__(self):
+        pass
+
+    def score(self, token):
+        """
+        Calculate the opportunity score for a token.
+        TODO: Implement scoring formula.
+        """
+        return {
+            "token": token,
+            "score": "D",
+            "details": {}
+        }
+🟦 core/math_engine.py
+python
+class MathEngine:
+    def multiplier(self, buy_price, sell_price):
+        if buy_price == 0:
+            return 0
+        return sell_price / buy_price
+
+    def position_size(self, capital, risk_factor):
+        """
+        Calculate position size based on capital and risk.
+        """
+        return capital * risk_factor
+🟦 core/risk_engine.py
+python
+class RiskEngine:
+    def __init__(self, config=None):
+        self.config = config or {}
+
+    def evaluate(self, token_data):
+        """
+        Evaluate risk: slippage, liquidity, volatility, contract risk.
+        TODO: Implement risk scoring.
+        """
+        return {
+            "risk": "MEDIUM",
+            "details": {}
+        }
+🟦 core/strategy_engine.py
+python
+class StrategyEngine:
+    def __init__(self, config=None):
+        self.config = config or {}
+
+    def should_enter(self, score):
+        """
+        Determine if the bot should enter a position.
+        """
+        return score in ["A+", "A", "B", "C", "D"]
+
+    def should_exit(self, position):
+        """
+        Determine if the bot should exit a position.
+        """
+        return False
+🟦 core/execution_engine.py
+python
+class ExecutionEngine:
+    def __init__(self, exchange):
+        self.exchange = exchange
+
+    def buy(self, token, amount):
+        """
+        Execute a buy order.
+        TODO: Implement exchange API call.
+        """
+        return {"status": "ok", "token": token, "amount": amount}
+
+    def sell(self, token, amount):
+        """
+        Execute a sell order.
+        TODO: Implement exchange API call.
+        """
+        return {"status": "ok", "token": token, "amount": amount}
+🟩 4. .gitignore PRO
+À mettre dans .gitignore :
+
+Code
+__pycache__/
+*.log
+.env
+*.pyc
+🟩 5. requirements.txt
+Code
+requests
+python-dotenv
