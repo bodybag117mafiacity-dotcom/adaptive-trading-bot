@@ -1,0 +1,154 @@
+🟩 1. Tests du Market Scanner
+Fichier : tests/test_scanner.py
+
+✔ Vérifier que le scanner retourne une liste
+✔ Vérifier que les données brutes sont bien filtrées
+✔ Vérifier que les assets invalides sont rejetés
+✔ Vérifier que les assets avec volume insuffisant sont filtrés
+✔ Vérifier que les assets avec liquidité insuffisante sont filtrés
+✔ Vérifier que le scanner ne crash pas si l’API retourne rien
+✔ Vérifier que le scanner gère les erreurs réseau
+✔ Vérifier que le scanner gère les timeouts
+🟩 2. Tests du Opportunity Engine
+Fichier : tests/test_opportunity.py
+
+✔ Vérifier que le score est toujours retourné
+✔ Vérifier que le score est dans A+ → F
+✔ Vérifier que les données manquantes ne crashent pas le moteur
+✔ Vérifier que les poids sont appliqués correctement
+✔ Vérifier que les tokens à faible liquidité reçoivent un score bas
+✔ Vérifier que les tokens à fort momentum reçoivent un score plus haut
+✔ Vérifier que les tokens à risque élevé sont déclassés
+✔ Vérifier que le moteur fonctionne avec 1000+ tokens (stress test)
+🟩 3. Tests du Math Engine
+Fichier : tests/test_math.py
+
+✔ multiplier(buy_price, sell_price)
+multiplier correct
+
+multiplier = 0 si buy_price = 0
+
+multiplier négatif si sell < buy
+
+✔ position_size(capital, risk_factor)
+position = capital × risk
+
+position jamais > capital
+
+position jamais < 0
+
+✔ target calculations
+target atteint → True
+
+target non atteint → False
+
+🟩 4. Tests du Risk Engine
+Fichier : tests/test_risk.py
+
+✔ Vérifier que le moteur retourne un niveau de risque
+✔ Vérifier que les tokens illiquides → HIGH RISK
+✔ Vérifier que les tokens volatiles → HIGH RISK
+✔ Vérifier que les tokens stables → LOW RISK
+✔ Vérifier que les tokens avec contrat douteux → EXTREME RISK
+✔ Vérifier que le moteur ne crash pas si les données sont incomplètes
+✔ Vérifier que le moteur gère les valeurs extrêmes (0, très grand, NaN)
+🟩 5. Tests du Strategy Engine
+Fichier : tests/test_strategy.py
+
+✔ should_enter(score)
+A+, A, B, C, D → True
+
+E, F → False
+
+✔ should_exit(position)
+target atteint → True
+
+stop-loss atteint → True
+
+temps maximum dépassé → True
+
+sinon → False
+
+✔ Vérifier que la stratégie respecte les limites de risque
+✔ Vérifier que la stratégie ne dépasse jamais la capitalisation
+🟩 6. Tests du Execution Engine
+Fichier : tests/test_execution.py
+
+✔ buy(token, amount)
+retourne un status ok
+
+amount > 0
+
+token valide
+
+simulateur d’API fonctionne
+
+✔ sell(token, amount)
+retourne un status ok
+
+amount > 0
+
+token valide
+
+✔ erreurs API
+simulateur d’erreur réseau
+
+simulateur de slippage
+
+simulateur de liquidité insuffisante
+
+🟩 7. Tests du Portfolio Engine
+Fichier : tests/test_portfolio.py
+
+✔ ajout de position
+✔ suppression de position
+✔ mise à jour du P/L
+✔ mise à jour du capital
+✔ conversion stablecoin
+✔ allocation correcte
+✔ historique des trades
+✔ limites de risque respectées
+🟩 8. Tests d’intégration (end-to-end)
+Fichier : tests/test_integration.py
+
+✔ Scanner → Opportunity → Risk → Strategy → Execution
+✔ Vérifier qu’un trade complet fonctionne
+✔ Vérifier qu’un trade est rejeté si :
+score trop bas
+
+risque trop élevé
+
+capital insuffisant
+
+✔ Vérifier que le bot peut traiter 100+ tokens
+✔ Vérifier que le bot peut traiter 1000+ tokens (stress test)
+🟩 9. Tests de performance
+Fichier : tests/test_performance.py
+
+✔ temps de scan < X secondes
+✔ temps de scoring < X secondes
+✔ temps de risk analysis < X secondes
+✔ temps d’exécution < X secondes
+🟩 10. Tests de sécurité
+Fichier : tests/test_security.py
+
+✔ injection de données invalides
+✔ tokens malformés
+✔ API qui retourne du garbage
+✔ overflow / underflow
+✔ division par zéro
+✔ valeurs extrêmes
+🟦 Résumé — Checklist PRO
+Voici la liste complète :
+
+Code
+[ ] Market Scanner tests
+[ ] Opportunity Engine tests
+[ ] Math Engine tests
+[ ] Risk Engine tests
+[ ] Strategy Engine tests
+[ ] Execution Engine tests
+[ ] Portfolio Engine tests
+[ ] Integration tests
+[ ] Performance tests
+[ ] Security tests
