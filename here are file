@@ -1,0 +1,50 @@
+adaptive-trading-bot/
+│
+├── README.md
+├── LICENSE
+├── .gitignore
+│
+├── requirements.txt
+├── setup.py
+│
+├── docs/
+│   ├── architecture.md
+│   ├── engines.md
+│   ├── portfolio.md
+│   └── api.md
+│
+├── config/
+│   ├── bot.json
+│   ├── markets.json
+│   └── risk.json
+│
+├── core/
+│   ├── market_scanner.py
+│   ├── opportunity_engine.py
+│   ├── math_engine.py
+│   ├── risk_engine.py
+│   ├── strategy_engine.py
+│   └── execution_engine.py
+│
+├── portfolio/
+│   ├── ledger.py
+│   ├── positions.py
+│   ├── settlement.py
+│   └── allocation.py
+│
+├── exchange/
+│   ├── binance.py
+│   ├── kucoin.py
+│   ├── evm.py
+│   └── dex.py
+│
+├── utils/
+│   ├── helpers.py
+│   ├── scoring.py
+│   └── logging.py
+│
+└── tests/
+    ├── test_scanner.py
+    ├── test_opportunity.py
+    ├── test_risk.py
+    └── test_strategy.py
